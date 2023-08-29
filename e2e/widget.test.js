@@ -14,28 +14,27 @@ describe('pay system widget Form', () => {
     page = await browser.newPage();
   });
 
-  test('Form should render on page start', async () => {
+  test('Button should render on page start', async () => {
     jest.setTimeout(20000);
     await page.goto('http://localhost:9000');
 
     // await page.waitForSelector('body');
-    await page.waitForSelector('.card-widget');
+    await page.waitForSelector('.container');
   });
 
-  test('Form input should add .green class if card number is valid', async () => {
+  test('Popover should render on button click', async () => {
     jest.setTimeout(40000);
     await page.goto('http://localhost:9000');
 
-    await page.waitForSelector('.card-widget');
+    await page.waitForSelector('.button');
 
-    const form = await page.$('.widget-form');
-    const input = await form.$('.input');
-    const submit = await form.$('.submit');
+    const button = await page.$('.button');
 
-    await input.type('4	5	5	6	7	3	7	5	8	6	8	9	9	8	5	5'); // eslint-disable-line no-tabs
-    await submit.click();
+    await button.click();
 
-    await page.waitForSelector('.card-widget .input.green');
+    await page.waitForSelector('.tooltip');
+    await page.waitForSelector('.tooltip_title');
+    await page.waitForSelector('.tooltip_content');
   }, 20000);
 
   afterEach(async () => {
