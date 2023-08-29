@@ -1,4 +1,4 @@
-name: CARD-WIDGET
+name: Forms
 
 on: [push, pull_request]
 
